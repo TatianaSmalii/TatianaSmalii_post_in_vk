@@ -11,16 +11,22 @@ import org.junit.Test
 class WallServiceTest {
     @Test
     fun add (){
-        val service = WallService
-        service.add(Post(0, 2, "3", "4", 5, "6", 7, 8, 9))
-        val result= WallService.printPosts()
+        //val service = WallService
+        //service.add(Post(0, 2, "3", "4", 5, "6", 7, 8, 9))
+        //val result= WallService.printPosts()
 
+        val result = WallService.add(Post(0, 2, "3", "4", 5, "6", 7, 8, 9))
+        //val result1 = WallService.add(Post(1, 2, "3", "4", 5, "6", 7, 8, 9))
+        // создание провального автотеста(добавила еще один пост (в массиве-1, соответственно id не совпал)
+
+        Assert.assertEquals(0, result.id)
     }
     @After
     //очистка после того как тест выполнится
     //можно вместо After(после) прописать Before(перед)
     fun clearAfterTest (){
         WallService.clear()
+
     }
     @Test
     fun updateExisting() {

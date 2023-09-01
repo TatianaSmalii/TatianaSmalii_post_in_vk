@@ -51,6 +51,7 @@ object WallService {//синглтон object-это класс (база дан
     }
     fun clear (){
         posts= emptyArray()
+        counterId =0
     }
 }
 
