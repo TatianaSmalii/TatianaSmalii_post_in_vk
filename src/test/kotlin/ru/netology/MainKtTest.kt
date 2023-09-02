@@ -1,6 +1,8 @@
 package ru.netology
 
+import Photo
 import Post
+import Video
 import WallService
 import org.junit.After
 
