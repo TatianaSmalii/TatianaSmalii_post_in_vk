@@ -19,7 +19,7 @@ class WallServiceTest {
 
         val result = WallService.add(Post(0, 2, "3", "4", 5, "6", 7, 8, 9))
         //val result1 = WallService.add(Post(1, 2, "3", "4", 5, "6", 7, 8, 9))
-        // создание провального автотеста(добавила еще один пост (в массиве-1, соответственно id не совпал)
+        // создание провального автотеста(добавила еще один пост (в массиве только один пост (id-0), соответственно id не совпал)
 
         Assert.assertEquals(0, result.id)
     }
@@ -61,4 +61,14 @@ class WallServiceTest {
         Assert.assertFalse(result)
         //WallService.clear() убираем так как добавили очистку после тестов clearAfterTest
     }
+
+
+    // 3.1. Исключения
+    //Реализация тестов по добавлению комментария к существующему посту
+    @Test (expected = WallService.PostNotFoundException::class)
+    fun add_Comment_realPost (){
+        val addComment = WallService
+        addComment =comm
+    }
+
 }
