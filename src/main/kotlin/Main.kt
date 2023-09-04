@@ -1,5 +1,3 @@
-import javax.xml.stream.events.Comment
-
 fun main (){
     val post1 = Post(0, 2, "3", "4", 5, "6", 7, 8, 9,
         attachments = arrayOf(PhotoAttachment("photo",Photo(1, 2," ")),
@@ -14,11 +12,11 @@ fun main (){
         "9","10", "15", 16, "17", 18, "19", 20, 21, 2, 23, 24, 25
         )
     val newComment = Comment (1,2,3,"First comment")
-    println(WallService.createComment(1,newComment))
+    val t = WallService.createComment(1,newComment)
     //println( WallService.createComment(2, comment = 1,2, "New comment"  )
     println(newComment)
     //println(updatePost)
-    println()
+    println(t)
 
 }
 object WallService {//синглтон object-это класс (база данных) в одном экземпляре который доступен глобально, без конструктора
@@ -48,17 +46,16 @@ object WallService {//синглтон object-это класс (база дан
     }
     fun createComment (postId: Int, comment: Comment): Comment {//Задача 3.1. Исключения
     // Первый вариант реализации
-        //1 проверить существование поста, если сущ- выведи комментарий, если нет - выдай исключение PostNotFoundException (пост не найден)
+        //1 проверить существование поста, если сущ и id совпадают - выведи комментарий, если нет/0 - выдай исключение PostNotFoundException (пост не найден)
 //        for ((index, post) in posts.withIndex()){
 //            if (post.id == postId){
 //                comments += comment
 //            }
 //            return comment
 //        }
-
     //Второй вариант реализации
-        posts.find { it.id == postId } ?: throw PostNotFoundException("В массиве нет поста с id - $postId")
-        //найди в постах это id (если оно совпадает с postId, то выведи коммент(последний), если нет/0-исключение
+        posts.find { it.id == postId } ?: throw PostNotFoundException("В массиве нет поста с id - $postId") //find - найди
+
         comments += comment
         return comment
     }
@@ -72,8 +69,6 @@ object WallService {//синглтон object-это класс (база дан
         counterId =0
     }
 }
-
-
 
 data class Comment ( //Комментарий
     var id : Int,
